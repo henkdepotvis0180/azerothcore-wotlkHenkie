@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "description": "Pinned, externally maintained AzerothCore modules for the solo funserver. Codex edits this file; CI installs them automatically.",
+  "modules": [
+    {
+      "name": "mod-playerbots",
+      "repo": "mod-playerbots/mod-playerbots",
+      "commit": "79bd428115c8f33b74b13de23b133d49c3f75c60",
+      "reason": "Required foundation for AI players, solo groups and dungeon bots."
+    }
+  ]
+}

@@ -49,3 +49,12 @@ External modules live in `modules/`, each a subdir with its own `CMakeLists.txt`
 ## Persisting lessons
 
 When a user correction reveals a lesson that generalizes, offer to persist it into these docs (placement per `.agents/docs/README.md`): use the `/self-improve` skill if installed, otherwise suggest the user to install it and read this page: https://www.azerothcore.org/wiki/agentic-engineering
+
+
+## Funserver project automation (this fork)
+
+This fork is a personal solo-first WotLK funserver based on the Playerbot branch. For any request to add, remove or update a third-party gameplay module, **first read `funserver/CODEX.md`**, then edit `funserver/modules.json` with a fixed upstream commit SHA and update `funserver/MODULES-NL.md`. Run `python scripts/funserver_modules.py validate` and, when the environment permits, sync the exact module sources. Never claim a module is compatible until built and tested.
+
+The upstream rule to avoid local builds unless explicitly requested still applies. In this fork, **GitHub Actions performs the CMake/Windows compilation automatically** when a pull request targets Playerbot. Do not require the user to run CMake manually. Always inspect GitHub Actions status and report whether build, server startup, SQL migrations, and in-game tests have actually been performed.
+
+Never edit the live Playerbot branch directly for new modules; use a feature branch and pull request. Do not auto-merge. Maintain upstream attribution and do not execute unreviewed third-party installer scripts.
