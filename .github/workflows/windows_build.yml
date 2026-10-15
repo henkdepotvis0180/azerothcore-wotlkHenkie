@@ -31,12 +31,10 @@ jobs:
       - name: Checkout AzerothCore
         uses: actions/checkout@v7
 
-      - name: Checkout Playerbot Module
-        uses: actions/checkout@v7
-        with:
-          repository: mod-playerbots/mod-playerbots
-          ref: ${{ github.ref_name == 'Playerbot' && 'master' || 'test-staging' }}
-          path: modules/mod-playerbots
+      - name: Sync pinned funserver modules
+        shell: pwsh
+        run: |
+          python scripts/funserver_modules.py sync
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.13
